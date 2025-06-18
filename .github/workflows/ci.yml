@@ -43,7 +43,7 @@ jobs:
       - name: "Запустити локальний сервер фронтенду"
         run: |
           cd frontend
-          nohup ./node_modules/.bin/http-server -p 8001 &
+          nohup npx http-server -p 8001 &
 
       - name: "Перевірити доступність index.html"
         run: |
