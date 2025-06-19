@@ -9,7 +9,7 @@ on:
 env:
   REGISTRY:  ghcr.io
   IMAGE_NAME: ${{ github.repository_owner }}/news-backend
-  PY_VERSION: "3.11"
+  PY_VERSION: "3.13"
 
 
 jobs:
@@ -21,10 +21,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Python 3.11
+      - name: Setup Python 3.13
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       - name: Install dependencies
         working-directory: ./backend
@@ -86,3 +86,4 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+#52
