@@ -36,7 +36,7 @@ jobs:
         working-directory: ./backend
         run: |
           pip install pytest pytest-asyncio httpx
-          pytest ../tests -q
+          PYTHONPATH=$(pwd) pytest tests -q
 
   frontend-tests:
     name: "Frontend: перевірка доступності"
