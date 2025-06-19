@@ -7,10 +7,20 @@ app = FastAPI()
 # Додамо CORS (поки що для localhost)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["<http://localhost:8001>"],  # фронтенд на 8001
+    allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+fake_users_db = {
+    STUDENT_ID: {
+        "username": STUDENT_ID,
+        "full_name": STUDENT_ID,
+        "hashed_password": "password123",  # нерекомендовано зберігати так на проді
+        "disabled": False,
+    }
+}
 
 # Пам'ять для збереження джерел (для кожного STUDENT_ID окремо)
 store = {STUDENT_ID: SOURCES.copy()}
