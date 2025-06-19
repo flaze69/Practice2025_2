@@ -1,8 +1,10 @@
 name: CI
 
 on:
-  push:        { branches: [main] }
-  pull_request:{ branches: [main] }
+  push:       
+    { branches: [main] }
+  pull_request:
+    { branches: [main] }
 
 env:
   REGISTRY:  ghcr.io
@@ -16,12 +18,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: ${{ env.PY_VERSION }} }
-      - name: "Install deps"
+      - name: Install deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest pytest-asyncio httpx feedparser
-      - name: "Run backend tests"
+      - name: Run backend tests
         run: pytest tests -q
 
   frontend-tests:
@@ -29,7 +31,7 @@ jobs:
     needs: backend-tests
     steps:
       - uses: actions/checkout@v4
-      - name: "Install & start http-server"
+      - name: Install & start http-server
         run: |
           npm install http-server
           npx http-server frontend -p 8001 &
@@ -50,7 +52,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.CR_PAT }}
-      - name: "Build & push image"
+      - name: Build & push image
         uses: docker/build-push-action@v5
         with:
           context: .
