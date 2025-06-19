@@ -9,7 +9,7 @@ on:
 env:
   REGISTRY:  ghcr.io
   IMAGE_NAME: ${{ github.repository_owner }}/news-backend
-  PY_VERSION: "3.13"
+  PY_VERSION: "3.11"
 
 jobs:
   backend-tests:
