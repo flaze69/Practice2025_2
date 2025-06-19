@@ -67,7 +67,7 @@ jobs:
       contents: read
       packages: write
     env:
-      REGISTRY: ghcr.io/vadim148852
+      REGISTRY: ghcr.io/flaze69
       IMAGE_NAME: news-backend
     steps:
       - uses: actions/checkout@v4
